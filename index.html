@@ -7,253 +7,206 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@900&family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            /* Paleta extraída da imagem e do arquivo original */
+            /* Paleta Oficial */
             --orange: #ef8200;
             --gold: #ffb400;
             --dark-blue: #0047ff;
             --med-blue: #368bff;
             --light-blue: #00b0ff;
             --ice-white: #f4faff;
-            --text-dark: #001a40;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
 
         body { 
             font-family: 'Plus Jakarta Sans', sans-serif; 
-            background: var(--ice-white); 
-            color: var(--text-dark);
+            background-color: var(--med-blue);
+            color: white;
             overflow-x: hidden;
         }
 
-        /* HEADER */
+        /* FUNDO DINÂMICO - ESSÊNCIA DE ÁGUA E GELO */
+        .water-bg {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(135deg, var(--dark-blue), var(--med-blue));
+            z-index: -1;
+        }
+        .water-bg::after {
+            content: ""; position: absolute; width: 100%; height: 100%;
+            background-image: radial-gradient(circle at 20% 30%, rgba(0, 176, 255, 0.2) 0%, transparent 50%),
+                              radial-gradient(circle at 80% 70%, rgba(239, 130, 0, 0.1) 0%, transparent 50%);
+        }
+
         header {
             padding: 20px 8%; display: flex; justify-content: space-between; align-items: center;
             position: fixed; width: 100%; top: 0; z-index: 1000;
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(15px);
-            border-bottom: 3px solid var(--light-blue);
+            background: rgba(0, 71, 255, 0.3); backdrop-filter: blur(20px);
+            border-bottom: 2px solid var(--light-blue);
         }
-        .logo { font-family: 'Inter', sans-serif; font-size: 1.8rem; font-weight: 900; color: var(--dark-blue); display: flex; align-items: center; }
-        .logo span { color: var(--orange); }
-        .logo::before { content: '☀️'; margin-right: 8px; font-size: 1.5rem; }
+        .logo { font-family: 'Inter', sans-serif; font-size: 1.8rem; font-weight: 900; color: white; display: flex; align-items: center; }
+        .logo span { color: var(--gold); }
 
-        /* HERO - ESSÊNCIA DA IMAGEM REFERÊNCIA */
+        /* HERO - ALTO IMPACTO */
         .hero {
-            height: 75vh; display: flex; align-items: center; justify-content: center;
-            background: var(--med-blue);
-            /* Padrão de ondas/radial inspirado na imagem */
-            background-image: radial-gradient(circle at center, var(--light-blue) 0%, var(--dark-blue) 100%);
-            color: white; text-align: center; position: relative;
-            clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+            height: 90vh; display: flex; flex-direction: column; align-items: center; justify-content: center;
+            text-align: center; padding: 0 5%;
         }
-        .hero-content h1 { 
-            font-family: 'Inter', sans-serif; 
-            font-size: clamp(3rem, 10vw, 5.5rem); 
-            line-height: 0.85; 
-            margin-bottom: 20px; 
-            text-transform: uppercase;
-            font-style: italic; /* Inclinado como na referência */
-            color: var(--gold);
-            text-shadow: 4px 4px 0px var(--dark-blue);
+        .hero h1 { 
+            font-family: 'Inter', sans-serif; font-size: clamp(3.5rem, 12vw, 7rem); 
+            line-height: 0.8; font-style: italic; color: var(--gold);
+            text-shadow: 6px 6px 0px var(--dark-blue); margin-bottom: 20px;
         }
-        .hero-content p { font-weight: 800; letter-spacing: 2px; text-transform: uppercase; background: white; color: var(--dark-blue); display: inline-block; padding: 5px 15px; border-radius: 5px; }
+        .hero p { 
+            background: white; color: var(--dark-blue); padding: 8px 20px; 
+            border-radius: 5px; font-weight: 900; text-transform: uppercase; letter-spacing: 2px;
+        }
 
-        /* INTRO + CARDS PEQUENOS */
-        .intro-section { padding: 100px 8% 60px; background: white; text-align: center; }
-        .intro-text { max-width: 800px; margin: 0 auto 50px; }
-        .intro-text h2 { font-size: 2.5rem; color: var(--dark-blue); font-weight: 800; margin-bottom: 20px; }
-        
-        .card-container { display: flex; gap: 20px; justify-content: center; max-width: 1100px; margin: 0 auto; }
+        /* SEÇÃO DE CARDS - CORES VIVAS */
+        .intro-section { padding: 80px 8%; background: rgba(255, 255, 255, 0.05); }
+        .intro-text { text-align: center; max-width: 800px; margin: 0 auto 60px; }
+        .intro-text h2 { font-size: 3rem; margin-bottom: 20px; font-family: 'Inter'; }
+
+        .card-container { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
         .info-card {
-            flex: 1; padding: 25px; border-radius: 25px; color: white; text-align: left;
-            transition: 0.3s; display: flex; flex-direction: column; justify-content: space-between; height: 240px;
+            flex: 1; min-width: 280px; padding: 40px 30px; border-radius: 30px;
+            display: flex; flex-direction: column; justify-content: flex-end; height: 320px;
+            transition: 0.3s;
         }
-        .info-card.c1 { background: var(--gold); color: var(--text-dark); }
+        .info-card.c1 { background: var(--gold); color: #001a40; }
         .info-card.c2 { background: var(--light-blue); }
-        .info-card.c3 { background: #1a1a1a; border: 2px solid var(--orange); }
-        
-        .info-card .icon { font-size: 2.5rem; }
-        .info-card h3 { font-size: 1.4rem; font-weight: 800; margin-top: 15px; line-height: 1.1; }
-        .info-card p { font-size: 0.9rem; opacity: 0.9; margin-top: 10px; }
+        .info-card.c3 { background: #151515; border: 3px solid var(--orange); }
+        .info-card h3 { font-size: 1.8rem; font-weight: 800; margin-bottom: 10px; }
+        .info-card .icon { font-size: 3rem; margin-bottom: auto; }
 
-        /* HISTÓRIA */
+        /* NOSSA HISTÓRIA - BLOCO DE CALOR */
         .history-section {
-            padding: 100px 8%; background: var(--ice-white);
-            display: flex; align-items: center; gap: 60px;
+            padding: 100px 8%; background: var(--orange); color: white;
+            display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 60px; align-items: center;
         }
-        .history-box { flex: 1; }
-        .history-box h2 { font-size: 3rem; color: var(--dark-blue); font-weight: 800; margin-bottom: 25px; }
-        .history-box p { font-size: 1.1rem; line-height: 1.7; color: var(--text-dark); opacity: 0.8; }
-        .history-img { flex: 1; height: 400px; background: white; border-radius: 30px; border: 5px solid var(--gold); display: flex; align-items: center; justify-content: center; box-shadow: 15px 15px 0 var(--dark-blue); }
+        .history-box h2 { font-family: 'Inter'; font-size: 4rem; line-height: 0.9; margin-bottom: 30px; }
+        .history-img { height: 400px; background: rgba(0,0,0,0.1); border-radius: 40px; border: 4px solid white; display: flex; align-items: center; justify-content: center; }
 
-        /* LISTA DE SABORES - Z-PATTERN COM CORES REAIS */
-        .flavor-row { display: flex; align-items: center; padding: 80px 8%; gap: 10%; }
-        .flavor-row:nth-child(even) { flex-direction: row-reverse; background: #f0f7ff; }
+        /* LISTA DE SABORES - IMERSÃO TOTAL */
+        .flavor-row { display: flex; align-items: center; padding: 120px 8%; gap: 8%; position: relative; }
+        .flavor-row:nth-child(even) { flex-direction: row-reverse; background: rgba(0, 176, 255, 0.1); }
         
         .flavor-img {
-            flex: 1; height: 450px; border-radius: 35px;
-            background: white; border: 10px solid var(--med-blue);
+            flex: 1; height: 500px; border-radius: 40px;
+            background: white; border: 12px solid rgba(255,255,255,0.2);
             display: flex; align-items: center; justify-content: center;
-            box-shadow: 20px 20px 0 var(--light-blue);
+            box-shadow: 25px 25px 0 var(--light-blue);
         }
-        .flavor-text { flex: 1; }
-        .flavor-text h2 { font-size: 3.5rem; color: var(--dark-blue); font-weight: 900; margin-bottom: 20px; }
-        .tag { display: inline-block; background: var(--orange); color: white; padding: 6px 20px; border-radius: 50px; font-weight: 800; margin-bottom: 15px; text-transform: uppercase; font-size: 0.8rem; }
+        .flavor-text h2 { font-size: 4rem; font-weight: 900; margin-bottom: 20px; color: var(--gold); text-shadow: 3px 3px 0px var(--dark-blue); }
+        .tag { background: white; color: var(--dark-blue); padding: 5px 20px; border-radius: 50px; font-weight: 800; text-transform: uppercase; margin-bottom: 20px; display: inline-block; }
 
-        /* CONTATO VIBRANTE - COM INFO DA REFERÊNCIA */
+        /* CONTATO - ENERGIA FINAL */
         .contact-area {
-            padding: 100px 8%; text-align: center; background: var(--dark-blue); color: white;
-            background-image: radial-gradient(circle at center, var(--med-blue) 0%, var(--dark-blue) 100%);
+            padding: 120px 8%; text-align: center; background: white; color: var(--dark-blue);
+            border-radius: 60px 60px 0 0;
         }
-        .contact-area h2 { font-size: 4rem; font-weight: 900; margin-bottom: 20px; font-style: italic; color: var(--gold); }
-        .contact-area p { font-size: 1.2rem; margin-bottom: 40px; font-weight: 600; }
-        
+        .contact-area h2 { font-size: 5rem; font-weight: 900; font-style: italic; margin-bottom: 20px; }
         .wa-button {
-            display: inline-flex; align-items: center; padding: 20px 50px; border-radius: 100px;
-            background: white; color: var(--dark-blue); text-decoration: none;
-            font-weight: 900; font-size: 1.8rem; transition: 0.3s;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            display: inline-flex; align-items: center; padding: 25px 60px; border-radius: 100px;
+            background: var(--dark-blue); color: white; text-decoration: none;
+            font-weight: 900; font-size: 2rem; transition: 0.3s;
         }
-        .wa-button:hover { transform: scale(1.05); background: var(--gold); }
-        .wa-button span { color: var(--orange); margin-right: 15px; }
-
-        footer { padding: 40px; text-align: center; font-weight: 800; color: var(--med-blue); background: var(--ice-white); }
+        .wa-button:hover { transform: scale(1.05) rotate(-2deg); background: var(--orange); }
 
         @media (max-width: 992px) {
-            .card-container, .flavor-row, .history-section { flex-direction: column; text-align: center; }
-            .info-card { width: 100%; height: auto; min-height: 200px; }
-            .hero-content h1 { font-size: 3.5rem; }
-            .flavor-img { width: 100%; height: 350px; margin-bottom: 30px; }
+            .flavor-row, .history-section { grid-template-columns: 1fr; flex-direction: column; text-align: center; }
+            .hero h1 { font-size: 4rem; }
         }
     </style>
 </head>
 <body>
 
+    <div class="water-bg"></div>
+
     <header>
         <div class="logo">GELA<span>Í</span></div>
-        <nav>
-            <a href="#contato" style="color:var(--dark-blue); text-decoration:none; font-weight:800; font-size: 0.9rem;">CONTATO</a>
-        </nav>
+        <nav><a href="#contato" style="color:white; text-decoration:none; font-weight:900;">CONTATO</a></nav>
     </header>
 
     <section class="hero">
-        <div class="hero-content">
-            <h1>REFRESQUE SEU <br>MOMENTO</h1>
-            <p>Pronto para Consumo</p>
-        </div>
+        <h1>REFRESQUE SEU <br>MOMENTO</h1>
+        <p>Pronto para Consumo • 500ml e 770ml</p>
     </section>
 
     <section class="intro-section">
-        <div class="intro-text">
-            <h2>O que é o Gelaí?</h2>
-            <p>Mais do que gelo, o Gelaí é a solução definitiva para salvar sua bebida no calor. Disponível em 500ml e 770ml, nosso copo mantém a pureza e a temperatura ideal onde quer que você esteja.</p>
-        </div>
-
         <div class="card-container">
             <div class="info-card c1">
                 <div class="icon">❄️</div>
-                <div>
-                    <h3>Gelo Cristalino</h3>
-                    <p>Alta densidade para máxima duração sem aguar seu drink.</p>
-                </div>
+                <h3>Gelo Cristalino</h3>
+                <p>Alta densidade para máxima duração. Não agua sua bebida.</p>
             </div>
             <div class="info-card c2">
                 <div class="icon">⚡</div>
-                <div>
-                    <h3>Pronto Uso</h3>
-                    <p>Conveniente e prático. Pegou na distribuidora, tá pronto.</p>
-                </div>
+                <h3>Pronto Uso</h3>
+                <p>A praticidade que você precisa. Pegou, abriu, salvou seu drink.</p>
             </div>
             <div class="info-card c3">
                 <div class="icon">🔥</div>
-                <div>
-                    <h3>Salva o Verão</h3>
-                    <p>Feito para suportar o calor intenso e refrescar sua sede.</p>
-                </div>
+                <h3>Salva o Verão</h3>
+                <p>Solução imediata para bebidas quentes em dias de sol intenso.</p>
             </div>
         </div>
     </section>
 
     <section class="history-section">
         <div class="history-box">
-            <h2>Nossa História</h2>
-            <p>Nascemos do desejo de oferecer a refrescância perfeita de forma descomplicada. O Gelaí foi idealizado para ser o parceiro estratégico das distribuidoras e o herói de quem busca qualidade em cada gole, seja na praia, no churrasco ou na festa.</p>
+            <h2>Nossa <br>História</h2>
+            <p>Nascemos sob o sol de 40°C com um único propósito: garantir que sua bebida esteja sempre trincando. O Gelaí une conveniência e pureza, transformando qualquer lugar no melhor ponto de refrescância do seu dia.</p>
         </div>
         <div class="history-img">
-            <span style="opacity: 0.2; font-weight: 900;">[FOTO LIFESTYLE]</span>
+            <span style="opacity: 0.5; font-weight: 900;">[FOTO DO MOMENTO GELAÍ]</span>
         </div>
     </section>
 
     <section class="flavor-list">
-        
         <div class="flavor-row">
             <div class="flavor-img">
-                <span style="opacity: 0.2; font-weight: 900;">[COPO NATURAL]</span>
+                <span style="opacity: 0.3; font-weight: 900; color:var(--dark-blue);">[FOTO NATURAL]</span>
             </div>
             <div class="flavor-text">
-                <div class="tag">Puro & Refrescante</div>
+                <div class="tag">Pureza Total</div>
                 <h2>Natural</h2>
-                <p>Água triplamente filtrada em gelo de alta performance. O clássico indispensável para qualquer bebida.</p>
+                <p>Água filtrada e congelada em alta performance. O indispensável para qualquer ocasião.</p>
             </div>
         </div>
 
         <div class="flavor-row">
-            <div class="flavor-img" style="border-color: #dceef4;">
-                <span style="opacity: 0.2; font-weight: 900;">[COPO ÁGUA DE COCO]</span>
+            <div class="flavor-img" style="border-color: var(--gold); box-shadow: 25px 25px 0 var(--orange);">
+                <span style="opacity: 0.3; font-weight: 900; color:var(--orange);">[FOTO MARACUJÁ]</span>
             </div>
             <div class="flavor-text">
-                <div class="tag" style="background:var(--light-blue);">Hidratação Máxima</div>
-                <h2>Água de Coco</h2>
-                <p>O sabor suave e nutritivo do coco em cubos gelados. A combinação perfeita para drinks leves e saudáveis.</p>
-            </div>
-        </div>
-
-        <div class="flavor-row">
-            <div class="flavor-img" style="border-color: var(--gold); box-shadow: 20px 20px 0 var(--orange);">
-                <span style="opacity: 0.2; font-weight: 900;">[COPO MARACUJÁ]</span>
-            </div>
-            <div class="flavor-text">
-                <div class="tag" style="background:var(--gold); color:var(--text-dark);">Explosão Cítrica</div>
+                <div class="tag">Energia Tropical</div>
                 <h2>Maracujá</h2>
-                <p>O toque azedinho e aromático que transforma seu destilado ou refrigerante em uma experiência tropical.</p>
+                <p>O toque cítrico e aromático que transforma seu drink em segundos. Sabor que gela.</p>
             </div>
         </div>
 
         <div class="flavor-row">
-            <div class="flavor-img" style="border-color: #ff4d4d; box-shadow: 20px 20px 0 #b30000;">
-                <span style="opacity: 0.2; font-weight: 900;">[COPO MELANCIA]</span>
+            <div class="flavor-img" style="border-color: #ff4d4d; box-shadow: 25px 25px 0 #b30000;">
+                <span style="opacity: 0.3; font-weight: 900; color:#ff4d4d;">[FOTO MELANCIA]</span>
             </div>
             <div class="flavor-text">
-                <div class="tag" style="background:#ff4d4d;">Doce Verão</div>
+                <div class="tag">Sabor de Verão</div>
                 <h2>Melancia</h2>
-                <p>Cor vibrante e sabor irresistível. O favorito dos dias ensolarados para drinks coloridos e refrescantes.</p>
+                <p>A doçura refrescante da melancia direto no seu copo. Ideal para gins e tônicas.</p>
             </div>
         </div>
-
-        <div class="flavor-row">
-            <div class="flavor-img" style="border-color: #32cd32; box-shadow: 20px 20px 0 #006400;">
-                <span style="opacity: 0.2; font-weight: 900;">[COPO MAÇÃ VERDE]</span>
-            </div>
-            <div class="flavor-text">
-                <div class="tag" style="background:#32cd32;">Energia Pura</div>
-                <h2>Maçã Verde</h2>
-                <p>Acidez equilibrada e frescor intenso. Ideal para quem busca um sabor marcante e inovador.</p>
-            </div>
-        </div>
-
     </section>
 
     <section class="contact-area" id="contato">
         <h2>Bora Gelar?</h2>
-        <p>Disponível em 500ml e 770ml nas melhores distribuidoras.</p>
+        <p style="margin-bottom: 40px; font-weight: 800;">Fale conosco e leve o Gelaí para sua distribuidora.</p>
         <a href="https://wa.me/5541998289873" class="wa-button">
-            <span>41</span> 99828-9873
+            41 99828-9873
         </a>
     </section>
 
     <footer>
-        GELAÍ &copy; 2026 | A REVOLUÇÃO DO GELO NO BRASIL
+        GELAÍ &copy; 2026 | A REVOLUÇÃO DA REFRESCÂNCIA
     </footer>
 
 </body>
